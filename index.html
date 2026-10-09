@@ -1,712 +1,542 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashish Kumar | Regional IT Mumbai Incharge & DevOps Specialist</title>
-    <!-- Tailwind CSS CDN -->
+    <title>ASHISH KUMAR // REGIONAL IT & DEVOPS SURVEILLANCE MATRIX</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Orbitron & Share Tech Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        darkBg: '#0a0f1d',
-                        cardBg: 'rgba(15, 23, 42, 0.65)',
-                        glassBorder: 'rgba(255, 255, 255, 0.08)',
-                        accentPrimary: '#3b82f6',
-                        accentSecondary: '#8b5cf6',
-                        accentCyan: '#06b6d4',
+                        cyberDark: '#04070e',
+                        cyberCard: 'rgba(10, 15, 28, 0.85)',
+                        matrixGreen: '#00ff66',
+                        dangerRed: '#ff1e3c',
+                        warningYellow: '#ffb703',
+                        neonCyan: '#00f0ff',
+                        accentPurple: '#8b5cf6'
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        mono: ['"Share Tech Mono"', 'monospace'],
+                        orbitron: ['Orbitron', 'sans-serif'],
                     },
                     boxShadow: {
-                        glass: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
-                        glow: '0 0 25px -5px rgba(59, 130, 246, 0.5)',
-                        'glow-purple': '0 0 25px -5px rgba(139, 92, 246, 0.5)',
+                        'neon-green': '0 0 20px rgba(0, 255, 102, 0.35)',
+                        'neon-red': '0 0 25px rgba(255, 30, 60, 0.5)',
+                        'neon-cyan': '0 0 20px rgba(0, 240, 255, 0.35)',
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
-            background-color: #0a0f1d;
-            color: #f8fafc;
-            font-family: 'Inter', sans-serif;
+            background-color: #04070e;
+            color: #00ff66;
+            font-family: 'Share Tech Mono', monospace;
             overflow-x: hidden;
         }
-        
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-        }
 
-        .glass-panel-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .glass-panel-hover:hover {
-            background: rgba(30, 41, 59, 0.75);
-            border-color: rgba(59, 130, 246, 0.4);
-            transform: translateY(-6px);
-            box-shadow: 0 12px 40px -10px rgba(59, 130, 246, 0.25);
-        }
-
-        .bg-glow-blob {
-            position: absolute;
-            filter: blur(120px);
-            z-index: -1;
-            opacity: 0.35;
-            border-radius: 50%;
+        /* CRT Scanlines & Cyber Overlay */
+        .crt::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 99999;
+            background-size: 100% 3px, 6px 100%;
             pointer-events: none;
         }
 
-        .gradient-text {
-            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #22d3ee 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .glitch-title {
+            text-shadow: 2px 0 #ff1e3c, -2px 0 #00f0ff;
+            animation: glitch 1.8s infinite linear alternate-reverse;
         }
 
-        /* Custom Scrollbar */
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 1px) }
+            40% { transform: translate(-1px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(-2px, -1px) }
+            100% { transform: translate(0) }
+        }
+
+        .panel-glass {
+            background: rgba(8, 13, 24, 0.9);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(0, 255, 102, 0.25);
+        }
+
+        .panel-glass-danger {
+            background: rgba(18, 6, 10, 0.9);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 30, 60, 0.4);
+        }
+
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #0a0f1d;
+            background: #04070e;
         }
         ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 4px;
+            background: #00ff6655;
+            border-radius: 3px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #3b82f6;
+            background: #00ff66;
         }
     </style>
 </head>
-<body class="bg-darkBg text-slate-100 relative selection:bg-blue-500 selection:text-white">
+<body class="crt min-h-screen flex flex-col justify-between selection:bg-dangerRed selection:text-white">
 
-    <div class="bg-glow-blob bg-blue-600 w-[500px] h-[500px] top-[-100px] left-[-100px] animate-pulse"></div>
-    <div class="bg-glow-blob bg-purple-600 w-[600px] h-[600px] top-[40%] right-[-150px]"></div>
-    <div class="bg-glow-blob bg-cyan-600 w-[500px] h-[500px] bottom-[10%] left-[10%]"></div>
+    <!-- Background Matrix Rain Canvas -->
+    <canvas id="matrix-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-15"></canvas>
 
-    <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 transition-all duration-300" id="navbar">
-        <nav class="max-w-7xl mx-auto glass-panel rounded-2xl px-6 py-4 flex items-center justify-between shadow-glass">
-            <a href="#hero" class="flex items-center space-x-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-purple-600 flex items-center justify-center font-bold text-lg shadow-glow group-hover:scale-105 transition-transform">
-                    AK
+    <!-- Top Surveillance Header -->
+    <header class="relative z-10 border-b border-dangerRed/40 bg-cyberDark/95 px-4 py-3 shadow-neon-red">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-4">
+            
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded bg-dangerRed/20 border border-dangerRed flex items-center justify-center text-dangerRed shadow-neon-red animate-pulse">
+                    <i class="fa-solid fa-user-shield text-2xl"></i>
                 </div>
                 <div>
-                    <span class="font-bold text-lg tracking-wide block leading-tight text-white group-hover:text-blue-400 transition-colors">Ashish Kumar</span>
-                    <span class="text-xs text-blue-400/80 font-medium">IT Leader & DevOps Specialist</span>
+                    <div class="flex items-center space-x-2">
+                        <span class="px-2 py-0.5 rounded bg-dangerRed text-black font-extrabold text-[10px] tracking-wider animate-pulse">DEFCON 2</span>
+                        <h1 class="font-orbitron font-black text-lg md:text-xl text-white tracking-wider glitch-title">ASHISH KUMAR // REGIONAL IT & DEVOPS SURVEILLANCE</h1>
+                    </div>
+                    <p class="text-xs text-dangerRed tracking-widest font-mono">CHIEF INCHARGE // HERITAGE FOODS MH // SMART IT HUB // PRAJAPATI COMPUTER // AK INFOTECH</p>
                 </div>
-            </a>
-
-            <!-- Desktop Nav Links -->
-            <div class="hidden md:flex items-center space-x-1 lg:space-x-2">
-                <a href="#about" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">About</a>
-                <a href="#experience" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Experience</a>
-                <a href="#ventures" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Ventures</a>
-                <a href="#skills" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Skills</a>
-                <a href="#projects" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Projects</a>
-                <a href="#contact" class="ml-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-glow hover:shadow-lg hover:opacity-95 active:scale-95 transition-all">Contact</a>
             </div>
 
-            <!-- Mobile Menu Toggle Button -->
-            <button id="menu-btn" class="md:hidden text-slate-300 hover:text-white p-2 rounded-xl focus:outline-none bg-white/5 border border-white/10">
-                <i class="fa-solid fa-bars text-lg"></i>
-            </button>
-        </nav>
-
-        <!-- Mobile Menu Modal -->
-        <div id="mobile-menu" class="hidden md:hidden max-w-7xl mx-auto mt-2 glass-panel rounded-2xl p-6 flex flex-col space-y-3 shadow-glass border border-white/10">
-            <a href="#about" class="mobile-link px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-blue-600/20 hover:text-blue-400 transition-all">About</a>
-            <a href="#experience" class="mobile-link px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-blue-600/20 hover:text-blue-400 transition-all">Experience</a>
-            <a href="#ventures" class="mobile-link px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-blue-600/20 hover:text-blue-400 transition-all">Ventures</a>
-            <a href="#skills" class="mobile-link px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-blue-600/20 hover:text-blue-400 transition-all">Skills</a>
-            <a href="#projects" class="mobile-link px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-blue-600/20 hover:text-blue-400 transition-all">Projects</a>
-            <a href="#contact" class="mobile-link px-4 py-3 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 text-center shadow-glow">Contact Me</a>
+            <!-- Quick Telemetry & Alarm Switch -->
+            <div class="flex flex-wrap items-center justify-center gap-3">
+                <div class="hidden sm:flex items-center space-x-2 px-3 py-1.5 rounded bg-cyberCard border border-matrixGreen/30 text-xs">
+                    <span class="w-2.5 h-2.5 rounded-full bg-matrixGreen animate-ping"></span>
+                    <span class="text-slate-400">MAHARASHTRA NODES:</span>
+                    <span class="text-matrixGreen font-bold">ONLINE (14/14)</span>
+                </div>
+                <div class="flex items-center space-x-2 px-3 py-1.5 rounded bg-cyberCard border border-cyan-500/30 text-xs">
+                    <i class="fa-solid fa-satellite-dish text-neonCyan"></i>
+                    <span class="text-slate-400">AWS REGION:</span>
+                    <span class="text-neonCyan font-bold">ap-south-1</span>
+                </div>
+                <button id="alarm-toggle" onclick="toggleAlarm()" class="px-4 py-2 rounded bg-dangerRed/20 border border-dangerRed text-dangerRed hover:bg-dangerRed hover:text-white transition-all text-xs font-bold tracking-wider flex items-center space-x-2 shadow-neon-red">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span id="alarm-text">SIREN: MUTED</span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <section id="hero" class="min-h-screen pt-36 pb-20 px-4 sm:px-8 flex items-center justify-center relative">
-        <div class="max-w-5xl mx-auto text-center z-10">
+    <!-- Main Dashboard Grid -->
+    <main class="relative z-10 max-w-7xl mx-auto w-full p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto">
+
+        <!-- Left & Center: Interactive Terminal & Live Packet Sniffer (8 Cols) -->
+        <div class="lg:col-span-8 flex flex-col space-y-6">
             
-            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-panel mb-8 border border-blue-500/30 text-blue-400 text-sm font-medium shadow-glow animate-pulse">
-                <span class="w-2.5 h-2.5 rounded-full bg-blue-400 animate-ping"></span>
-                <span>Regional IT Incharge & Enterprise Infrastructure Lead</span>
+            <!-- Terminal Panel -->
+            <div class="panel-glass rounded-lg overflow-hidden shadow-neon-green flex flex-col h-[480px]">
+                <div class="bg-cyberDark/90 px-4 py-2.5 border-b border-matrixGreen/30 flex items-center justify-between text-xs">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-dangerRed"></div>
+                        <div class="w-3 h-3 rounded-full bg-warningYellow"></div>
+                        <div class="w-3 h-3 rounded-full bg-matrixGreen"></div>
+                        <span class="ml-2 text-matrixGreen font-bold font-mono">ashish@maharashtra-core-router:~#</span>
+                    </div>
+                    <div class="text-slate-400 flex items-center space-x-3">
+                        <span class="hidden sm:inline">USER: ROOT_ADMIN</span>
+                        <button onclick="clearTerminal()" class="hover:text-matrixGreen transition-colors"><i class="fa-solid fa-eraser"></i> Clear</button>
+                    </div>
+                </div>
+
+                <!-- Terminal Output Window -->
+                <div id="terminal-output" class="flex-1 p-4 overflow-y-auto space-y-2 text-sm font-mono text-matrixGreen bg-black/70">
+                    <p class="text-dangerRed font-bold">[!] ROOT ACCESS LOGGED: Session authenticated for Ashish Kumar (Regional IT Lead).</p>
+                    <p class="text-slate-300">Connected to Enterprise Clusters across Maharashtra (Mumbai, Pune, Nagpur, Nashik).</p>
+                    <p class="text-slate-400">Type <span class="text-neonCyan font-bold">'help'</span> for available operational commands or <span class="text-neonCyan font-bold">'scan maharashtra'</span> to initiate region-wide vulnerability sweep.</p>
+                    <br>
+                </div>
+
+                <!-- Terminal Command Input -->
+                <div class="p-3 bg-cyberDark border-t border-matrixGreen/30 flex items-center space-x-2">
+                    <span class="text-matrixGreen font-bold">ashish@root:#</span>
+                    <input type="text" id="terminal-input" autofocus onkeydown="handleCommand(event)" placeholder="Enter command (e.g. help, scan maharashtra, nmap, docker ps, aws status)..." class="flex-1 bg-transparent border-none outline-none text-matrixGreen placeholder-matrixGreen/30 font-mono text-sm">
+                    <button onclick="executeInput()" class="px-4 py-1.5 rounded bg-matrixGreen/20 border border-matrixGreen text-matrixGreen hover:bg-matrixGreen hover:text-black transition-all text-xs font-bold">
+                        EXECUTE
+                    </button>
+                </div>
             </div>
 
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
-                Architecting Resilient IT & <br>
-                <span class="gradient-text">DevOps Ecosystems</span>
-            </h1>
-
-            <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
-                Empowering enterprise operations across Maharashtra at <span class="text-white font-medium">Heritage Foods Limited</span>. Specializing in Cloud Automation, Linux Infrastructure, CI/CD pipelines, and high-performance IT solutions.
-            </p>
-
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-glow hover:shadow-blue-500/50 hover:scale-105 active:scale-95 transition-all flex items-center justify-center space-x-3">
-                    <span>Explore Projects</span>
-                    <i class="fa-solid fa-arrow-right-long"></i>
-                </a>
-                <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-slate-200 glass-panel glass-panel-hover flex items-center justify-center space-x-3">
-                    <span>Let's Connect</span>
-                    <i class="fa-regular fa-envelope text-blue-400"></i>
-                </a>
-            </div>
-
-            <!-- Quick Stats Bar -->
-            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-blue-500/30 transition-all">
-                    <h3 class="text-3xl font-extrabold text-blue-400 mb-1">Regional</h3>
-                    <p class="text-xs text-slate-400 uppercase tracking-wider font-medium">IT Incharge (MH)</p>
+            <!-- Real-Time Network Packet Sniffer -->
+            <div class="panel-glass rounded-lg p-4 border border-cyan-500/30">
+                <div class="flex items-center justify-between mb-3 border-b border-cyan-500/20 pb-2">
+                    <div class="flex items-center space-x-2 text-neonCyan font-orbitron text-sm">
+                        <i class="fa-solid fa-wave-square animate-pulse"></i>
+                        <span>LIVE REGIONAL NETWORK TRAFFIC & CCTV STREAM</span>
+                    </div>
+                    <span class="text-xs text-slate-400 animate-pulse">[PORT 443 // SECURE SSL TUNNEL]</span>
                 </div>
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-purple-500/30 transition-all">
-                    <h3 class="text-3xl font-extrabold text-purple-400 mb-1">3+</h3>
-                    <p class="text-xs text-slate-400 uppercase tracking-wider font-medium">IT Ventures Owned</p>
-                </div>
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-all">
-                    <h3 class="text-3xl font-extrabold text-cyan-400 mb-1">AWS & CCNA</h3>
-                    <p class="text-xs text-slate-400 uppercase tracking-wider font-medium">Certified Expert</p>
-                </div>
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-emerald-500/30 transition-all">
-                    <h3 class="text-3xl font-extrabold text-emerald-400 mb-1">100%</h3>
-                    <p class="text-xs text-slate-400 uppercase tracking-wider font-medium">Uptime & Reliability</p>
+                <div id="packet-log" class="h-36 overflow-y-auto space-y-1 text-xs font-mono text-slate-300 bg-black/60 p-3 rounded border border-cyan-500/10">
+                    <div class="text-cyan-400">[17:08:12] HERITAGE FOODS MH: SAP ERP DB SYNC COMPLETED SUCCESSFULLY (0 ERROR)</div>
+                    <div class="text-slate-400">[17:08:14] SMART IT HUB: NEW CLIENT SERVICE REQUEST TICKET #SH-8809 GENERATED</div>
+                    <div class="text-warningYellow">[17:08:15] PRAJAPATI COMPUTER: HARDWARE REPAIR BENCH 03 DIAGNOSTIC IN PROGRESS</div>
+                    <div class="text-matrixGreen">[17:08:17] AK SECURITY SYSTEM: 32-CHANNEL CCTV SURVEILLANCE FEED STABLE ACROSS ALL ZONES</div>
                 </div>
             </div>
 
         </div>
-    </section>
 
-    <section id="about" class="py-24 px-4 sm:px-8 relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs uppercase tracking-widest text-blue-400 font-bold mb-3">Professional Summary</h2>
-                <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Bridging Enterprise Infrastructure & Modern DevOps</h3>
-            </div>
+        <!-- Right Column: System Telemetry, Threat Gauges & Business Node Status (4 Cols) -->
+        <div class="lg:col-span-4 flex flex-col space-y-6">
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <div class="lg:col-span-5 glass-panel p-8 sm:p-10 rounded-3xl border border-white/10 relative overflow-hidden group">
-                    <div class="absolute -right-16 -bottom-16 w-48 h-48 bg-blue-600/20 rounded-full blur-3xl group-hover:bg-purple-600/30 transition-all"></div>
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-cyan-500 flex items-center justify-center text-2xl font-bold text-white mb-6 shadow-glow">
-                        <i class="fa-solid fa-server"></i>
+            <!-- Hard System Telemetry & Threat Gauges -->
+            <div class="panel-glass-danger rounded-lg p-5 shadow-neon-red flex flex-col space-y-4">
+                <div class="flex items-center justify-between border-b border-dangerRed/30 pb-2">
+                    <h3 class="font-orbitron font-bold text-sm text-dangerRed flex items-center space-x-2">
+                        <i class="fa-solid fa-microchip"></i>
+                        <span>HARDWARE & CLUSTER LOAD</span>
+                    </h3>
+                    <span class="text-xs text-dangerRed animate-ping">ACTIVE MONITOR</span>
+                </div>
+
+                <!-- CPU Core Frequency / Load -->
+                <div>
+                    <div class="flex justify-between text-xs mb-1">
+                        <span class="text-slate-300">REGIONAL CLUSTER CPU (EPYC 64-CORE)</span>
+                        <span id="cpu-val" class="text-dangerRed font-bold">84.2%</span>
                     </div>
-                    <h4 class="text-2xl font-bold mb-4 text-white">IT Leadership & Execution</h4>
-                    <p class="text-slate-300 leading-relaxed mb-6">
-                        Accomplished Regional IT professional with extensive expertise in managing enterprise-grade infrastructure, cloud environments, automated deployments, and advanced networking across Maharashtra.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20">IT Management</span>
-                        <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20">Cloud Architecture</span>
-                        <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">System Administration</span>
+                    <div class="w-full bg-black/75 rounded h-2.5 border border-dangerRed/30 overflow-hidden">
+                        <div id="cpu-bar" class="bg-dangerRed h-full transition-all duration-500" style="width: 84.2%"></div>
                     </div>
                 </div>
 
-                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div class="glass-panel p-6 rounded-2xl glass-panel-hover border border-white/5">
-                        <div class="w-12 h-12 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center text-lg font-bold mb-4">
-                            <i class="fa-solid fa-cloud-arrow-up"></i>
-                        </div>
-                        <h5 class="text-lg font-bold text-white mb-2">Cloud & DevOps Automation</h5>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Deploying robust CI/CD pipelines, containerizing workloads using Docker, and managing scalable AWS cloud infrastructure.
-                        </p>
+                <!-- RAM Allocation -->
+                <div>
+                    <div class="flex justify-between text-xs mb-1">
+                        <span class="text-slate-300">DATABASE & K8S WORKERS RAM</span>
+                        <span id="ram-val" class="text-warningYellow font-bold">76.8%</span>
                     </div>
-
-                    <div class="glass-panel p-6 rounded-2xl glass-panel-hover border border-white/5">
-                        <div class="w-12 h-12 rounded-xl bg-purple-600/20 text-purple-400 flex items-center justify-center text-lg font-bold mb-4">
-                            <i class="fa-solid fa-network-wired"></i>
-                        </div>
-                        <h5 class="text-lg font-bold text-white mb-2">Network & Infrastructure</h5>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            CCNA certified professional managing enterprise networking, security systems, firewalls, and hardware maintenance.
-                        </p>
+                    <div class="w-full bg-black/75 rounded h-2.5 border border-warningYellow/30 overflow-hidden">
+                        <div id="ram-bar" class="bg-warningYellow h-full transition-all duration-500" style="width: 76.8%"></div>
                     </div>
+                </div>
 
-                    <div class="glass-panel p-6 rounded-2xl glass-panel-hover border border-white/5">
-                        <div class="w-12 h-12 rounded-xl bg-cyan-600/20 text-cyan-400 flex items-center justify-center text-lg font-bold mb-4">
-                            <i class="fa-solid fa-code"></i>
-                        </div>
-                        <h5 class="text-lg font-bold text-white mb-2">Scripting & Development</h5>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Writing efficient automation scripts in Python and Bash, and developing bespoke web and utility portals.
-                        </p>
+                <!-- Network Bandwidth Throughput -->
+                <div>
+                    <div class="flex justify-between text-xs mb-1">
+                        <span class="text-slate-300">ENTERPRISE IN/OUT TRAFFIC</span>
+                        <span class="text-neonCyan font-bold">2.18 GB/s</span>
                     </div>
-
-                    <div class="glass-panel p-6 rounded-2xl glass-panel-hover border border-white/5">
-                        <div class="w-12 h-12 rounded-xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center text-lg font-bold mb-4">
-                            <i class="fa-solid fa-building-shield"></i>
-                        </div>
-                        <h5 class="text-lg font-bold text-white mb-2">Entrepreneurial IT Ventures</h5>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Founder and owner of Smart IT Hub, Prajapati Computer, and AK Infotech providing end-to-end tech solutions.
-                        </p>
+                    <div class="w-full bg-black/75 rounded h-2.5 border border-neonCyan/30 overflow-hidden">
+                        <div class="bg-neonCyan h-full transition-all duration-500 w-[72%]"></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section id="experience" class="py-24 px-4 sm:px-8 relative bg-slate-950/40">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs uppercase tracking-widest text-blue-400 font-bold mb-3">Career Journey</h2>
-                <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Professional Experience</h3>
-            </div>
-
-            <div class="relative border-l-2 border-blue-500/30 ml-4 sm:ml-32 space-y-12">
-                
-                <!-- Experience 1 -->
-                <div class="relative pl-8 sm:pl-10 group">
-                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 border-4 border-darkBg flex items-center justify-center shadow-glow">
-                        <i class="fa-solid fa-briefcase text-xs text-white"></i>
-                    </div>
-                    <div class="glass-panel p-8 rounded-3xl glass-panel-hover border border-white/5">
-                        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 inline-block mb-3">Present</span>
-                        <h4 class="text-2xl font-bold text-white mb-1">Regional IT Incharge</h4>
-                        <h5 class="text-blue-400 font-medium mb-4">Heritage Foods Limited • Maharashtra Region</h5>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                            Leading IT infrastructure operations across the entire Maharashtra region. Responsible for server uptime, network security, database management, G Suite administration, hardware/software deployment, and ensuring seamless IT support for regional business units.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">Enterprise IT</span>
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">Network Administration</span>
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">G Suite Management</span>
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">Incident Management</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Experience 2 -->
-                <div class="relative pl-8 sm:pl-10 group">
-                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-gradient-to-r from-purple-600 to-cyan-600 border-4 border-darkBg flex items-center justify-center shadow-glow-purple">
-                        <i class="fa-solid fa-server text-xs text-white"></i>
-                    </div>
-                    <div class="glass-panel p-8 rounded-3xl glass-panel-hover border border-white/5">
-                        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 inline-block mb-3">Previous Role</span>
-                        <h4 class="text-2xl font-bold text-white mb-1">System Administrator</h4>
-                        <h5 class="text-purple-400 font-medium mb-4">Heritage Foods Limited</h5>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                            Managed server environments, performed regular backups, monitored system health, resolved complex IT escalations, and maintained robust domain controllers and active directory protocols.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">Linux / Windows Server</span>
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">Active Directory</span>
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">Backup & Disaster Recovery</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Experience 3 -->
-                <div class="relative pl-8 sm:pl-10 group">
-                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-gradient-to-r from-cyan-600 to-emerald-600 border-4 border-darkBg flex items-center justify-center">
-                        <i class="fa-solid fa-wrench text-xs text-white"></i>
-                    </div>
-                    <div class="glass-panel p-8 rounded-3xl glass-panel-hover border border-white/5">
-                        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 inline-block mb-3">Early Career</span>
-                        <h4 class="text-2xl font-bold text-white mb-1">Desktop Support Field Engineer</h4>
-                        <h5 class="text-cyan-400 font-medium mb-4">Rize Communication & Security System</h5>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                            Provided on-site technical troubleshooting, hardware assembly, OS installations, CCTV & security systems setup, printer configuration, and client-side network diagnostics.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">Hardware & Networking</span>
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">CCTV & Security</span>
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">Troubleshooting</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="ventures" class="py-24 px-4 sm:px-8 relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs uppercase tracking-widest text-blue-400 font-bold mb-3">Entrepreneurial Ventures</h2>
-                <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">IT Businesses & Services</h3>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Venture 1 -->
-                <div class="glass-panel p-8 rounded-3xl glass-panel-hover border border-white/10 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-cyan-500 flex items-center justify-center text-2xl font-bold text-white mb-6 shadow-glow">
-                            <i class="fa-solid fa-microchip"></i>
-                        </div>
-                        <h4 class="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">Smart IT Hub</h4>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                            Delivering comprehensive digital solutions, smart IT infrastructure consulting, custom software utilities, and technical support for businesses and individuals.
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-blue-400 font-semibold">
-                        <span>Digital & IT Solutions</span>
-                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                    </div>
-                </div>
-
-                <!-- Venture 2 -->
-                <div class="glass-panel p-8 rounded-3xl glass-panel-hover border border-white/10 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-2xl font-bold text-white mb-6 shadow-glow-purple">
-                            <i class="fa-solid fa-computer"></i>
-                        </div>
-                        <h4 class="text-2xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">Prajapati Computer</h4>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                            Reliable hardware sales, laptop/desktop repairs, custom rig assembly, peripheral maintenance, and local technical assistance with exceptional turnaround time.
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-purple-400 font-semibold">
-                        <span>Hardware & Repair</span>
-                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                    </div>
-                </div>
-
-                <!-- Venture 3 -->
-                <div class="glass-panel p-8 rounded-3xl glass-panel-hover border border-white/10 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-600 to-emerald-500 flex items-center justify-center text-2xl font-bold text-white mb-6 shadow-glow">
-                            <i class="fa-solid fa-shield-halved"></i>
-                        </div>
-                        <h4 class="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">AK Infotech</h4>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                            Specialized security systems installation, CCTV surveillance setup, networking solutions, biometric attendance systems, and corporate IT asset management.
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-cyan-400 font-semibold">
-                        <span>Security & Networking</span>
-                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="py-24 px-4 sm:px-8 relative bg-slate-950/40">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs uppercase tracking-widest text-blue-400 font-bold mb-3">Expertise & Tools</h2>
-                <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Technical Stack & Skills</h3>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                
-                <!-- Skill Group 1: Cloud & DevOps -->
-                <div class="glass-panel p-8 rounded-3xl glass-panel-hover border border-white/5">
-                    <div class="w-12 h-12 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center text-xl mb-6">
-                        <i class="fa-solid fa-cloud"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-4">Cloud & DevOps</h4>
-                    <ul class="space-y-3 text-sm text-slate-300">
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-blue-400 text-xs"></i><span>AWS Cloud Services</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-blue-400 text-xs"></i><span>Docker Containerization</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-blue-400 text-xs"></i><span>CI/CD Pipelines (GitHub Actions)</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-blue-400 text-xs"></i><span>Linux (RHEL / Ubuntu)</span></li>
-                    </ul>
-                </div>
-
-                <!-- Skill Group 2: Programming & Scripting -->
-                <div class="glass-panel p-8 rounded-3xl glass-panel-hover border border-white/5">
-                    <div class="w-12 h-12 rounded-xl bg-purple-600/20 text-purple-400 flex items-center justify-center text-xl mb-6">
-                        <i class="fa-solid fa-terminal"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-4">Programming & Scripts</h4>
-                    <ul class="space-y-3 text-sm text-slate-300">
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-purple-400 text-xs"></i><span>Python Automation</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-purple-400 text-xs"></i><span>Bash / Shell Scripting</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-purple-400 text-xs"></i><span>Flask / Web Utilities</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-purple-400 text-xs"></i><span>Git Version Control</span></li>
-                    </ul>
-                </div>
-
-                <!-- Skill Group 3: Infrastructure & Networking -->
-                <div class="glass-panel p-8 rounded-3xl glass-panel-hover border border-white/5">
-                    <div class="w-12 h-12 rounded-xl bg-cyan-600/20 text-cyan-400 flex items-center justify-center text-xl mb-6">
+            <!-- Ashish Kumar Enterprises & Ventures Status -->
+            <div class="panel-glass rounded-lg p-5 flex flex-col space-y-4 border border-matrixGreen/30">
+                <div class="flex items-center justify-between border-b border-matrixGreen/30 pb-2">
+                    <h3 class="font-orbitron font-bold text-sm text-matrixGreen flex items-center space-x-2">
                         <i class="fa-solid fa-network-wired"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-4">Networking & Systems</h4>
-                    <ul class="space-y-3 text-sm text-slate-300">
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-cyan-400 text-xs"></i><span>CCNA Certified Networking</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-cyan-400 text-xs"></i><span>Active Directory & Domain</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-cyan-400 text-xs"></i><span>Firewalls & Security Systems</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-cyan-400 text-xs"></i><span>Hardware Diagnostics</span></li>
-                    </ul>
+                        <span>VENTURE NODES // ASHISH KUMAR</span>
+                    </h3>
+                    <span class="text-xs text-matrixGreen">4/4 OPERATIONAL</span>
                 </div>
 
-                <!-- Skill Group 4: Tools & Enterprise Admin -->
-                <div class="glass-panel p-8 rounded-3xl glass-panel-hover border border-white/5">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center text-xl mb-6">
-                        <i class="fa-solid fa-toolbox"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-4">Tools & Management</h4>
-                    <ul class="space-y-3 text-sm text-slate-300">
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-400 text-xs"></i><span>Google Workspace Admin</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-400 text-xs"></i><span>Backup & Recovery Systems</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-400 text-xs"></i><span>IT Asset Management</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-400 text-xs"></i><span>Helpdesk & Ticketing</span></li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="py-24 px-4 sm:px-8 relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs uppercase tracking-widest text-blue-400 font-bold mb-3">Portfolio Works</h2>
-                <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Featured Projects & Repositories</h3>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Project 1 -->
-                <div class="glass-panel p-8 rounded-3xl glass-panel-hover border border-white/10 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="w-12 h-12 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center text-xl">
-                                <i class="fa-solid fa-code-commit"></i>
-                            </div>
-                            <a href="https://github.com/ashishp8137-design/first-ci-cd" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:bg-blue-600/30 transition-all">
-                                <i class="fa-brands fa-github text-lg"></i>
-                            </a>
-                        </div>
-                        <h4 class="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">first-ci-cd</h4>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                            A robust foundational CI/CD pipeline repository demonstrating automated build, test, and deployment workflows using GitHub Actions and automated scripting.
-                        </p>
-                    </div>
-                    <div>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/20">CI/CD</span>
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 border border-purple-500/20">GitHub Actions</span>
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Automation</span>
-                        </div>
-                        <a href="https://github.com/ashishp8137-design/first-ci-cd" target="_blank" class="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-sm font-semibold text-white flex items-center justify-center space-x-2 hover:bg-blue-600 hover:border-transparent transition-all">
-                            <span>View Repository</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="glass-panel p-8 rounded-3xl glass-panel-hover border border-white/10 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="w-12 h-12 rounded-xl bg-purple-600/20 text-purple-400 flex items-center justify-center text-xl">
-                                <i class="fa-solid fa-heart-pulse"></i>
-                            </div>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">Python</span>
-                        </div>
-                        <h4 class="text-2xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">System Health Monitor</h4>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                            Automated enterprise Python utility script to monitor CPU, memory, disk usage, and critical network services with instant alert notifications and logging.
-                        </p>
-                    </div>
-                    <div>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/20">Python</span>
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 border border-purple-500/20">SysAdmin</span>
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Monitoring</span>
-                        </div>
-                        <a href="#contact" class="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-sm font-semibold text-white flex items-center justify-center space-x-2 hover:bg-purple-600 hover:border-transparent transition-all">
-                            <span>Request Details</span>
-                            <i class="fa-solid fa-envelope text-xs"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="glass-panel p-8 rounded-3xl glass-panel-hover border border-white/10 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="w-12 h-12 rounded-xl bg-cyan-600/20 text-cyan-400 flex items-center justify-center text-xl">
-                                <i class="fa-solid fa-globe"></i>
-                            </div>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Web Portal</span>
-                        </div>
-                        <h4 class="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Smart IT Hub Portal</h4>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                            Centralized service request portal and customer management dashboard built for tech services, security installations, and hardware support operations.
-                        </p>
-                    </div>
-                    <div>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/20">Web Apps</span>
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 border border-purple-500/20">Tailwind</span>
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">JavaScript</span>
-                        </div>
-                        <a href="#contact" class="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-sm font-semibold text-white flex items-center justify-center space-x-2 hover:bg-cyan-600 hover:border-transparent transition-all">
-                            <span>Explore Venture</span>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 px-4 sm:px-8 relative bg-slate-950/40">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs uppercase tracking-widest text-blue-400 font-bold mb-3">Get In Touch</h2>
-                <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Let's Discuss Opportunities & IT Solutions</h3>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                
-                <!-- Contact Info Cards -->
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="glass-panel p-8 rounded-3xl border border-white/5">
-                        <h4 class="text-2xl font-bold text-white mb-6">Contact Information</h4>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-8">
-                            Whether you want to discuss regional IT operations, cloud automation, enterprise infrastructure, or services through Smart IT Hub, Prajapati Computer, and AK Infotech—feel free to reach out.
-                        </p>
-
-                        <div class="space-y-6">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-2xl bg-blue-600/20 text-blue-400 flex items-center justify-center text-lg flex-shrink-0">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <div>
-                                    <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold block">Location</span>
-                                    <span class="text-white font-medium">Maharashtra / Prayagraj</span>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-2xl bg-purple-600/20 text-purple-400 flex items-center justify-center text-lg flex-shrink-0">
-                                    <i class="fa-solid fa-envelope"></i>
-                                </div>
-                                <div>
-                                    <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold block">Email</span>
-                                    <span class="text-white font-medium">ashishp8137@gmail.com</span>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-2xl bg-cyan-600/20 text-cyan-400 flex items-center justify-center text-lg flex-shrink-0">
-                                    <i class="fa-brands fa-github"></i>
-                                </div>
-                                <div>
-                                    <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold block">GitHub</span>
-                                    <a href="https://github.com/ashishp8137-design" target="_blank" class="text-blue-400 hover:underline font-medium">github.com/ashishp8137-design</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="lg:col-span-7">
-                    <form id="contact-form" class="glass-panel p-8 sm:p-10 rounded-3xl border border-white/10 space-y-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">Your Name</label>
-                                <input type="text" id="name" required class="w-full bg-slate-900/60 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-all" placeholder="John Doe">
-                            </div>
-                            <div>
-                                <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">Your Email</label>
-                                <input type="email" id="email" required class="w-full bg-slate-900/60 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-all" placeholder="john@example.com">
-                            </div>
-                        </div>
-
+                <div class="space-y-3 text-xs">
+                    <div class="p-2.5 rounded bg-black/60 border border-matrixGreen/20 flex items-center justify-between">
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">Subject</label>
-                            <input type="text" id="subject" required class="w-full bg-slate-900/60 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-all" placeholder="Project Inquiry / IT Consultation">
+                            <div class="font-bold text-white">Heritage Foods (MH Region)</div>
+                            <div class="text-slate-400 text-[10px]">Role: Regional IT Incharge // Uptime: 99.99%</div>
                         </div>
+                        <span class="px-2 py-0.5 rounded bg-matrixGreen/20 text-matrixGreen border border-matrixGreen/40 text-[10px] font-bold">SECURE</span>
+                    </div>
 
+                    <div class="p-2.5 rounded bg-black/60 border border-cyan-500/20 flex items-center justify-between">
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">Message</label>
-                            <textarea id="message" rows="5" required class="w-full bg-slate-900/60 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-all resize-none" placeholder="Hello Ashish, I would like to discuss..."></textarea>
+                            <div class="font-bold text-white">Smart IT Hub</div>
+                            <div class="text-slate-400 text-[10px]">Digital & IT Solutions // Portal Active</div>
                         </div>
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/20 text-neonCyan border border-cyan-500/40 text-[10px] font-bold">ONLINE</span>
+                    </div>
 
-                        <button type="submit" class="w-full py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-glow hover:shadow-lg hover:opacity-95 active:scale-98 transition-all flex items-center justify-center space-x-2">
-                            <span>Send Message</span>
-                            <i class="fa-solid fa-paper-plane text-sm"></i>
-                        </button>
-                    </form>
+                    <div class="p-2.5 rounded bg-black/60 border border-purple-500/20 flex items-center justify-between">
+                        <div>
+                            <div class="font-bold text-white">Prajapati Computer</div>
+                            <div class="text-slate-400 text-[10px]">Hardware & Repair Desk // Bench Ready</div>
+                        </div>
+                        <span class="px-2 py-0.5 rounded bg-purple-500/20 text-accentPurple border border-purple-500/40 text-[10px] font-bold">ACTIVE</span>
+                    </div>
+
+                    <div class="p-2.5 rounded bg-black/60 border border-warningYellow/20 flex items-center justify-between">
+                        <div>
+                            <div class="font-bold text-white">AK Infotech / AK Security</div>
+                            <div class="text-slate-400 text-[10px]">CCTV & Networking // 32 Channels</div>
+                        </div>
+                        <span class="px-2 py-0.5 rounded bg-warningYellow/20 text-warningYellow border border-warningYellow/40 text-[10px] font-bold">MONITORING</span>
+                    </div>
                 </div>
+            </div>
 
-            </div>
         </div>
-    </section>
 
-    <footer class="py-12 px-4 sm:px-8 border-t border-white/10 relative">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-            <div>
-                <a href="#hero" class="text-lg font-bold text-white tracking-wide block mb-1">Ashish Kumar</a>
-                <p class="text-xs text-slate-400">Regional IT Incharge & DevOps Specialist • All Rights Reserved © 2026</p>
-            </div>
-            
-            <div class="flex items-center space-x-4">
-                <a href="https://github.com/ashishp8137-design" target="_blank" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:bg-blue-600/30 transition-all">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="mailto:ashishp8137@gmail.com" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:bg-blue-600/30 transition-all">
-                    <i class="fa-solid fa-envelope"></i>
-                </a>
-            </div>
-        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 border-t border-matrixGreen/20 bg-cyberDark/95 py-4 px-6 text-center text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div>ASHISH KUMAR // REGIONAL IT INCHARGE & DEVOPS SPECIALIST // ALL RIGHTS RESERVED</div>
+        <div class="text-matrixGreen">SYSTEM TIME: <span id="utc-clock">00:00:00 UTC</span></div>
     </footer>
 
+    <!-- JavaScript Engine -->
     <script>
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+        // Matrix Rain Canvas Animation
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
 
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%+-/~{[|]}';
+        const alphabet = katakana + latin;
 
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 40) {
-                navbar.classList.add('py-2');
-                navbar.classList.remove('py-4');
-            } else {
-                navbar.classList.add('py-4');
-                navbar.classList.remove('py-2');
+        const fontSize = 16;
+        let columns = canvas.width / fontSize;
+        const rainDrops = [];
+
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(4, 7, 14, 0.08)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00ff66';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
             }
-        });
+        }
+        setInterval(drawMatrix, 30);
 
-        // Contact Form Handling (Simulated Success Message without alert)
-        const contactForm = document.getElementById('contact-form');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = contactForm.querySelector('button[type="submit"]');
-            const originalHTML = btn.innerHTML;
-            btn.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i><span>Message Sent Successfully!</span>`;
-            btn.classList.add('bg-emerald-600');
-            
-            setTimeout(() => {
-                btn.innerHTML = originalHTML;
-                btn.classList.remove('bg-emerald-600');
-                contactForm.reset();
-            }, 4000);
-        });
+        // UTC Clock
+        setInterval(() => {
+            const now = new Date();
+            document.getElementById('utc-clock').innerText = now.toUTCString().split(' ')[4] + ' UTC';
+        }, 1000);
+
+        // Web Audio API Siren Alarm
+        let audioCtx = null;
+        let alarmInterval = null;
+        let isAlarmActive = false;
+
+        function toggleAlarm() {
+            isAlarmActive = !isAlarmActive;
+            const btnText = document.getElementById('alarm-text');
+            const btn = document.getElementById('alarm-toggle');
+
+            if (isAlarmActive) {
+                btnText.innerText = "SIREN: ACTIVE (LOUD)";
+                btn.classList.add('bg-dangerRed', 'text-white', 'animate-bounce');
+                startAlarmSound();
+            } else {
+                btnText.innerText = "SIREN: MUTED";
+                btn.classList.remove('bg-dangerRed', 'text-white', 'animate-bounce');
+                stopAlarmSound();
+            }
+        }
+
+        function startAlarmSound() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (alarmInterval) clearInterval(alarmInterval);
+
+            alarmInterval = setInterval(() => {
+                if (!isAlarmActive) return;
+                try {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(950, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(450, audioCtx.currentTime + 0.25);
+                    gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.25);
+                } catch(e) {
+                    console.debug("Audio play error:", e);
+                }
+            }, 500);
+        }
+
+        function stopAlarmSound() {
+            if (alarmInterval) clearInterval(alarmInterval);
+        }
+
+        // Terminal Command Processor
+        const terminalOutput = document.getElementById('terminal-output');
+        const terminalInput = document.getElementById('terminal-input');
+
+        function clearTerminal() {
+            terminalOutput.innerHTML = '<p class="text-slate-400">Terminal buffer cleared by Ashish Kumar.</p>';
+        }
+
+        function handleCommand(e) {
+            if (e.key === 'Enter') {
+                executeInput();
+            }
+        }
+
+        function executeInput() {
+            const cmd = terminalInput.value.trim();
+            if (!cmd) return;
+
+            appendTerminal(`ashish@root:~# ${cmd}`, 'text-white font-bold');
+            terminalInput.value = '';
+
+            processCommand(cmd.toLowerCase());
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }
+
+        function appendTerminal(html, className = 'text-matrixGreen') {
+            const p = document.createElement('div');
+            p.className = className;
+            p.innerHTML = html;
+            terminalOutput.appendChild(p);
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }
+
+        function processCommand(cmd) {
+            switch(cmd) {
+                case 'help':
+                    appendTerminal(`AVAILABLE SURVEILLANCE & DEVOPS COMMANDS:
+  <span class="text-neonCyan">help</span>                 - Display this operational help menu
+  <span class="text-neonCyan">scan maharashtra</span>     - Sweep regional nodes across Maharashtra plants
+  <span class="text-neonCyan">nmap</span>                 - Enumerate network ports & security firewalls
+  <span class="text-neonCyan">docker ps</span>            - List active container workloads & microservices
+  <span class="text-neonCyan">aws status</span>           - Check AWS cloud instance health (ap-south-1)
+  <span class="text-neonCyan">firewall bypass</span>    - Execute emergency security protocol override
+  <span class="text-neonCyan">reboot nodes</span>         - Soft reboot Kubernetes worker cluster
+  <span class="text-neonCyan">trace ip</span>             - Trace suspicious ingress packet source
+  <span class="text-neonCyan">clear</span>                - Clear terminal output`);
+                    break;
+
+                case 'scan maharashtra':
+                    appendTerminal('[*] Initializing regional vulnerability scan across Maharashtra (Mumbai, Pune, Nagpur)...');
+                    setTimeout(() => appendTerminal('[+] HERITAGE FOODS PLANT #1 (MUM): SECURE (Active Directory healthy)'), 500);
+                    setTimeout(() => appendTerminal('[+] SMART IT HUB SERVER (PUNE): ALL SERVICES ONLINE'), 1000);
+                    setTimeout(() => appendTerminal('[+] PRAJAPATI COMPUTER BENCH: NO HARDWARE ANOMALIES'), 1500);
+                    setTimeout(() => appendTerminal('[+] AK INFOTECH CCTV GATEWAY: 32 CAMERAS STREAMING 1080P'), 2000);
+                    setTimeout(() => appendTerminal('[*] Region sweep complete. 0 critical vulnerabilities found.', 'text-matrixGreen font-bold'), 2500);
+                    break;
+
+                case 'nmap':
+                    appendTerminal('[*] Starting Nmap 7.94 scan on cluster gateway 10.244.0.1...');
+                    setTimeout(() => appendTerminal('PORT     STATE SERVICE<br>22/tcp   open  ssh (Key-only enforced)<br>80/tcp   open  http (Nginx Reverse Proxy)<br>443/tcp  open  https (SSL Encrypted)<br>6379/tcp open  redis (Cluster Authenticated)'), 1000);
+                    break;
+
+                case 'docker ps':
+                    appendTerminal('CONTAINER ID   IMAGE                          COMMAND                  CREATED         STATUS         PORTS<br>' +
+                                   'a1b2c3d4e5f6   redis:7-alpine                 "docker-entrypoint.s…"   3 days ago      Up 3 days      6379/tcp<br>' +
+                                   '7f8e9d0c1b2a   nginx:latest                   "/docker-entrypoint.…"   6 days ago      Up 6 days      0.0.0.0:80->80/tcp<br>' +
+                                   '3e4r5t6y7u8i   python:3.11-flask              "python app.py"          2 weeks ago     Up 2 weeks     8000/tcp');
+                    break;
+
+                case 'aws status':
+                    appendTerminal('[*] Connecting to AWS Region ap-south-1 (Mumbai)...');
+                    setTimeout(() => appendTerminal('[+] EC2 Instances: 8/8 Running (m5.xlarge)'), 500);
+                    setTimeout(() => appendTerminal('[+] RDS Aurora PostgreSQL: Multi-AZ Replication Synchronized'), 1000);
+                    setTimeout(() => appendTerminal('[+] S3 Enterprise Backup Bucket: Encrypted & Locked'), 1500);
+                    break;
+
+                case 'firewall bypass':
+                    appendTerminal('[!] WARNING: Initiating emergency firewall bypass protocol...', 'text-dangerRed font-bold');
+                    setTimeout(() => appendTerminal('[+] Temporary security exception granted for IP 10.244.0.99', 'text-warningYellow'), 1000);
+                    setTimeout(() => appendTerminal('[+] Tunnel successfully established.', 'text-matrixGreen'), 1800);
+                    break;
+
+                case 'reboot nodes':
+                    appendTerminal('[*] Dispatching Kubernetes graceful drain signal to worker nodes...', 'text-warningYellow');
+                    setTimeout(() => appendTerminal('[+] node-mh-central-01 restarted successfully.', 'text-matrixGreen'), 1200);
+                    setTimeout(() => appendTerminal('[+] All cluster pods rebalanced.', 'text-matrixGreen'), 2000);
+                    break;
+
+                case 'trace ip':
+                    appendTerminal('[*] Tracing suspicious packet ingress...');
+                    setTimeout(() => appendTerminal('IP: 185.220.101.8 // ISP: Tor Exit Node // Action: Blocked by AK Infotech Firewall'), 1000);
+                    break;
+
+                case 'clear':
+                    clearTerminal();
+                    break;
+
+                default:
+                    appendTerminal(`Command not recognized: '${cmd}'. Type 'help' for authorized commands.`, 'text-dangerRed');
+                    break;
+            }
+        }
+
+        // Dynamic Packet Sniffer Stream
+        const samplePackets = [
+            '<span class="text-matrixGreen">[PACKET] TCP ACK HERITAGE-ERP-MH -> 10.244.0.15 [Cipher: AES-256]</span>',
+            '<span class="text-cyan-400">[API] SMART IT HUB // CLIENT TICKET #9982 UPDATED</span>',
+            '<span class="text-warningYellow">[SYSTEM] PRAJAPATI COMPUTER // HARDWARE DIAGNOSTIC LOG SAVED</span>',
+            '<span class="text-matrixGreen">[SECURITY] AK INFOTECH // CCTV NVR STREAM STABLE // 0 PACKET LOSS</span>'
+        ];
+
+        setInterval(() => {
+            const logBox = document.getElementById('packet-log');
+            const randomPkt = samplePackets[Math.floor(Math.random() * samplePackets.length)];
+            const timeStr = new Date().toTimeString().split(' ')[0];
+            const div = document.createElement('div');
+            div.innerHTML = `[${timeStr}] ${randomPkt}`;
+            logBox.appendChild(div);
+            logBox.scrollTop = logBox.scrollHeight;
+            if (logBox.children.length > 30) {
+                logBox.removeChild(logBox.children[0]);
+            }
+        }, 4000);
+
+        // Fluctuating Hardware Telemetry
+        setInterval(() => {
+            const cpu = (78 + Math.random() * 15).toFixed(1);
+            const ram = (72 + Math.random() * 10).toFixed(1);
+
+            document.getElementById('cpu-val').innerText = cpu + '%';
+            document.getElementById('cpu-bar').style.width = cpu + '%';
+
+            document.getElementById('ram-val').innerText = ram + '%';
+            document.getElementById('ram-bar').style.width = ram + '%';
+        }, 2500);
     </script>
 </body>
 </html>
