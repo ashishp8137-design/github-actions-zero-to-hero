@@ -1,5 +1,5 @@
 name: python lint
-on 
+on:
   push:
     branches: [main]
   
