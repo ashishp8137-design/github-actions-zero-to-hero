@@ -1,147 +1,228 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farewell Tribute - Tushar Nale | Heritage Foods Limited</title>
-    <!-- Google Fonts & Confetti Library -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#f59e0b',
+                            darkGold: '#d97706',
+                            purple: '#8b5cf6',
+                            indigo: '#4f46e5',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 2.5s infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & Confetti / Canvas Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-        }
-
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: #333;
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(circle at 50% 20%, #1e1b4b 0%, #0f172a 60%, #020617 100%);
+            color: #f8fafc;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            overflow-x: hidden;
         }
-
-        .card {
-            background: #ffffff;
-            width: 100%;
-            max-width: 650px;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .company-badge {
-            display: inline-block;
-            background: #e6f4ea;
-            color: #137333;
-            padding: 6px 16px;
-            font-size: 13px;
-            font-weight: 600;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .glass-modal {
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(245, 158, 11, 0.3);
         }
-
-        h1 {
-            font-size: 26px;
-            color: #1a73e8;
-            margin-bottom: 8px;
+        .text-glow {
+            text-shadow: 0 0 25px rgba(245, 158, 11, 0.6);
         }
-
-        .role {
-            font-size: 15px;
-            color: #5f6368;
-            font-weight: 500;
-            margin-bottom: 25px;
+        .btn-glow {
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.5);
         }
-
-        .tribute-box {
-            background: #f8f9fa;
-            border-left: 4px solid #1a73e8;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: left;
-            margin-bottom: 30px;
-            line-height: 1.6;
-            color: #444;
-            font-size: 15px;
-        }
-
-        .tribute-box p {
-            margin-bottom: 12px;
-        }
-
-        .tribute-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        .signature {
-            margin-top: 25px;
-            font-weight: 600;
-            color: #202124;
-            text-align: right;
-            font-size: 15px;
-        }
-
-        .touch-btn {
-            background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
-            color: white;
-            border: none;
-            padding: 14px 35px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            outline: none;
-        }
-
-        .touch-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 65, 108, 0.6);
-        }
-
-        .touch-btn:active {
-            transform: translateY(0);
+        .btn-glow:hover {
+            box-shadow: 0 0 50px rgba(245, 158, 11, 0.8);
         }
     </style>
 </head>
-<body>
+<body class="relative flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
 
-    <div class="card">
-        <div class="company-badge">Heritage Foods Limited</div>
+    <!-- Ambient Background Lighting Orbs -->
+    <div class="absolute top-10 left-1/4 w-72 h-72 bg-purple-600/20 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
+    <div class="absolute bottom-10 right-1/4 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none animate-pulse-slow" style="animation-delay: 1.5s;"></div>
+
+    <main class="relative z-10 w-full max-w-3xl mx-auto glass-card rounded-3xl p-6 sm:p-10 shadow-2xl border border-white/10 mt-4 mb-8">
         
-        <h1>Tushar Nale</h1>
-        <div class="role">Regional IT Incharge</div>
-
-        <div class="tribute-box">
-            <p><strong>A heartfelt note of appreciation:</strong></p>
-            <p>Tushar sir, you have always been an exceptional leader. Working with you never felt like working under a boss or manager; you treated everyone like a true brother, offering continuous guidance, incredible patience, and the best suggestions during every challenge.</p>
-            <p>Thank you so much for your constant support, mentorship, and encouragement throughout this journey.</p>
-            <div class="signature">— With gratitude, Ashish Kumar</div>
+        <!-- Company Badge -->
+        <div class="flex justify-center mb-6">
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase shadow-inner">
+                🏢 Heritage Foods Limited
+            </span>
         </div>
 
-        <!-- Interactive Button to trigger celebration -->
-        <button class="touch-btn" id="tusharBtn">🎉 Touch Tushar 🎉</button>
+        <!-- Main Title & Subtitle -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-400 to-amber-500 text-glow mb-3">
+                Tushar Nale
+            </h1>
+            <p class="text-lg sm:text-xl font-medium text-slate-300 tracking-wide">
+                Regional IT Incharge
+            </p>
+            <div class="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <!-- Heartfelt Tribute Letter -->
+        <div class="glass-card p-6 sm:p-8 rounded-2xl mb-8 border border-white/10 relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 text-9{-} text-white/5 font-bold pointer-events-none select-none">TN</div>
+            <div class="relative z-10 space-y-4 text-slate-200 text-sm sm:text-base leading-relaxed">
+                <p class="font-semibold text-amber-300 text-base sm:text-lg flex items-center gap-2">
+                    <span>✨</span> A Special Farewell & Tribute Note
+                </p>
+                <p>
+                    Tushar sir, working with you has been an absolute privilege. You have always been much more than a boss or manager—you treat everyone like a true brother. 
+                </p>
+                <p>
+                    Your guidance, constant support during critical work challenges, and invaluable suggestions have shaped my professional path. Your empathetic and supportive leadership style makes everyone around you better.
+                </p>
+                <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <span class="text-xs sm:text-sm text-slate-400 italic">"A leader who inspires through brotherhood and wisdom."</span>
+                    <span class="font-bold text-amber-400 bg-amber-500/10 px-3 py-1 rounded-lg border border-amber-500/20 text-sm">
+                        — With utmost respect, Ashish Kumar
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Section: Claps & Touch Button -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 pt-2">
+            
+            <!-- Clap Counter Widget -->
+            <button id="clapBtn" class="flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-200 font-semibold transition-all duration-300 active:scale-95 group shadow-lg">
+                <span class="text-2xl group-hover:scale-125 transition-transform duration-300">👏</span>
+                <div class="text-left">
+                    <div class="text-xs text-slate-400">Applaud Tribute</div>
+                    <div class="text-sm font-bold text-amber-400"><span id="clapCount">142</span> Claps</div>
+                </div>
+            </button>
+
+            <!-- Prominent Touch Tushar Button -->
+            <button id="touchTusharBtn" class="btn-glow relative group inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-300 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 rounded-2xl overflow-hidden hover:scale-105 active:scale-95 cursor-pointer">
+                <span class="absolute inset-0 w-full h-full bg-white/20 group-hover:bg-transparent transition-colors duration-300"></span>
+                <span class="relative flex items-center gap-3 text-base sm:text-lg">
+                    <span>🎉 Touch Tushar 🎉</span>
+                </span>
+            </button>
+
+        </div>
+
+    </main>
+
+    <!-- Celebration Modal (Initially Hidden) -->
+    <div id="celebrationModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-500">
+        
+        <div class="glass-modal w-full max-w-2xl rounded-3xl p-6 sm:p-10 shadow-2xl transform scale-95 transition-transform duration-500 max-h-[90vh] overflow-y-auto relative border border-amber-500/40">
+            
+            <!-- Close Button -->
+            <button id="closeModalBtn" class="absolute top-5 right-5 text-slate-400 hover:text-white bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+
+            <!-- Modal Content Header -->
+            <div class="text-center mb-6">
+                <div class="inline-block p-3 bg-amber-500/20 rounded-2xl text-amber-400 text-3xl mb-3 animate-bounce-slow">
+                    🏆
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-400">
+                    Grand Celebration & Tribute!
+                </h2>
+                <p class="text-sm text-slate-300 mt-1">Honoring Tushar Nale — Regional IT Incharge @ Heritage Foods Limited</p>
+            </div>
+
+            <!-- Custom Quote Card -->
+            <div class="bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-purple-500/1{-} p-5 rounded-2xl border border-amber-500/30 mb-6 text-center">
+                <p class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-2">Featured Quote for Tushar Sir</p>
+                <p class="text-base sm:text-lg italic font-medium text-slate-100">
+                    "A great IT leader doesn't just manage systems; they empower people, fix problems with a smile, and stand like an elder brother when times get tough."
+                </p>
+                <p class="text-xs text-amber-300/80 mt-2 font-semibold">— Dedicated by Ashish Kumar</p>
+            </div>
+
+            <!-- Celebration Details Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <div class="bg-slate-800/60 p-4 rounded-xl border border-white/5">
+                    <div class="text-amber-400 font-bold text-sm mb-1">🏢 Organization</div>
+                    <div class="text-slate-200 text-sm">Heritage Foods Limited</div>
+                </div>
+                <div class="bg-slate-800/60 p-4 rounded-xl border border-white/5">
+                    <div class="text-amber-400 font-bold text-sm mb-1">🎯 Leadership Role</div>
+                    <div class="text-slate-200 text-sm">Regional IT Incharge</div>
+                </div>
+                <div class="bg-slate-800/60 p-4 rounded-xl border border-white/5">
+                    <div class="text-amber-400 font-bold text-sm mb-1">🤝 Core Quality</div>
+                    <div class="text-slate-200 text-sm">Brotherly Support & Expert Mentorship</div>
+                </div>
+                <div class="bg-slate-800/60 p-4 rounded-xl border border-white/5">
+                    <div class="text-amber-400 font-bold text-sm mb-1">🌟 Sent By</div>
+                    <div class="text-slate-200 text-sm">Ashish Kumar & Team</div>
+                </div>
+            </div>
+
+            <!-- Action button inside modal -->
+            <div class="text-center">
+                <button id="extraPartyBtn" class="px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold rounded-xl transition-all shadow-lg">
+                    ✨ Launch More Fireworks! ✨
+                </button>
+            </div>
+
+        </div>
+
     </div>
 
     <script>
-        const btn = document.getElementById('tusharBtn');
+        // Clap counter logic
+        const clapBtn = document.getElementById('clapBtn');
+        const clapCountSpan = document.getElementById('clapCount');
+        let claps = 142;
 
-        btn.addEventListener('click', () => {
-            // Trigger an immersive full-page confetti celebration
-            const duration = 3 * 1000;
+        clapBtn.addEventListener('click', () => {
+            claps++;
+            clapCountSpan.textContent = claps;
+            // Quick mini confetti on clap
+            confetti({
+                particleCount: 25,
+                spread: 60,
+                origin: { y: 0.85 }
+            });
+        });
+
+        // Touch Tushar Celebration Logic
+        const touchBtn = document.getElementById('touchTusharBtn');
+        const celebrationModal = document.getElementById('celebrationModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const extraPartyBtn = document.getElementById('extraPartyBtn');
+
+        function triggerMassiveCelebration() {
+            // Full screen fireworks and confetti extravaganza
+            const duration = 4 * 1000;
             const animationEnd = Date.now() + duration;
-            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+            const defaults = { startVelocity: 45, spread: 360, ticks: 80, zIndex: 10000 };
 
             function randomInRange(min, max) {
                 return Math.random() * (max - min) + min;
@@ -154,14 +235,42 @@
                     return clearInterval(interval);
                 }
 
-                const particleCount = 50 * (timeLeft / duration);
+                const particleCount = 70 * (timeLeft / duration);
                 
-                // Launch confetti from multiple random coordinates across the page
+                // Fire from multiple sides
                 confetti(Object.assign({}, defaults, { 
                     particleCount, 
-                    origin: { x: randomInRange(0.1, 0.9), y: Math.random() - 0.2 } 
+                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+                    colors: ['#f59e0b', '#ec4899', '#8b5cf6', '#3b82f6', '#10b981']
+                }));
+                confetti(Object.assign({}, defaults, { 
+                    particleCount, 
+                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+                    colors: ['#f59e0b', '#ec4899', '#8b5cf6', '#3b82f6', '#10b981']
                 }));
             }, 250);
+
+            // Open modal with smooth animation
+            celebrationModal.classList.remove('opacity-0', 'pointer-events-none');
+            celebrationModal.querySelector('.glass-modal').classList.remove('scale-95');
+            celebrationModal.querySelector('.glass-modal').classList.add('scale-100');
+        }
+
+        touchBtn.addEventListener('click', triggerMassiveCelebration);
+        extraPartyBtn.addEventListener('click', triggerMassiveCelebration);
+
+        // Close modal handlers
+        function closeModal() {
+            celebrationModal.classList.add('opacity-0', 'pointer-events-none');
+            celebrationModal.querySelector('.glass-modal').classList.remove('scale-100');
+            celebrationModal.querySelector('.glass-modal').classList.add('scale-95');
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+        celebrationModal.addEventListener('click', (e) => {
+            if (e.target === celebrationModal) {
+                closeModal();
+            }
         });
     </script>
 
