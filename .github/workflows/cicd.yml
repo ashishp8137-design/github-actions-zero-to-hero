@@ -37,4 +37,10 @@ jobs:
     steps: 
       - name: Deploying the app
         run: echo "Docker compose deployed the app"
+  writes_cicd_pipeline:
+    needs: [deploy,test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Name Of Writer's CICD 
+        run: echo "Avi Patel"
       
