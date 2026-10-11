@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Navratri - Ashish</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,17 +17,17 @@
             height: 100%;
             overflow: hidden;
             font-family: 'Poppins', sans-serif;
-            background: #11001c;
+            background: #090014;
         }
 
-        /* Initial Landing Screen */
+        /* Initial Landing / Welcome Screen */
         #welcome-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #4a0000, #1a0033);
+            background: linear-gradient(135deg, #3d0000, #140026);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -37,11 +38,13 @@
 
         .welcome-title {
             color: #ffd700;
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
             text-align: center;
-            text-shadow: 0 0 10px #ff4500;
-            animation: pulseText 2s infinite;
+            text-shadow: 0 0 15px #ff4500;
+            font-family: 'Cinzel', serif;
+            animation: pulseGlow 2s infinite;
+            padding: 0 20px;
         }
 
         /* Touch Button Style */
@@ -49,127 +52,150 @@
             background: linear-gradient(45deg, #ff8c00, #ff0000);
             color: white;
             border: 3px solid #ffd700;
-            padding: 15px 40px;
+            padding: 16px 45px;
             font-size: 1.5rem;
             font-weight: bold;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 0 25px rgba(255, 140, 0, 0.8);
+            box-shadow: 0 0 30px rgba(255, 140, 0, 0.9);
             transition: transform 0.2s, box-shadow 0.2s;
             animation: bounceBtn 1.5s infinite;
         }
 
         .welcome-btn:hover, .welcome-btn:active {
             transform: scale(1.08);
-            box-shadow: 0 0 40px #ffd700;
+            box-shadow: 0 0 50px #ffd700;
         }
 
-        /* Main Greeting Card Screen */
+        /* Main Live Animated Poster Screen */
         #main-screen {
             position: relative;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, #3d001a 0%, #0d001a 100%);
             display: none;
             flex-direction: column;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
             padding: 20px;
             overflow: hidden;
         }
 
-        /* Header / Sender Info */
+        /* Attached Durga Mata Photo as Full Background with Live Overlay */
+        .bg-poster {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('durga-mata.jpg'); /* References your attached image file */
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.8) contrast(1.1);
+            z-index: 1;
+            animation: posterZoom 20s infinite alternate;
+        }
+
+        /* Dark / Magical Gradient Overlay to make text and animations pop */
+        .overlay-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(20,0,40,0.4) 0%, rgba(5,0,15,0.85) 100%);
+            z-index: 2;
+        }
+
+        /* Header Greeting */
         .header-greeting {
-            text-align: center;
+            position: relative;
             z-index: 10;
+            text-align: center;
+            margin-top: 10px;
             animation: slideDown 1s ease-out;
         }
 
         .header-greeting h3 {
-            color: #ffcc00;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
+            color: #ffe600;
+            font-size: 1rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            text-shadow: 0 0 10px #ff0000;
         }
 
         .header-greeting h1 {
             color: #ff3333;
-            font-size: 2.5rem;
-            text-shadow: 0 0 15px #ff0000, 0 0 25px #ffcc00;
-            margin-top: 5px;
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            text-shadow: 0 0 20px #ff0000, 0 0 30px #ffcc00;
+            margin-top: 2px;
         }
 
-        /* Center Durga Mata Stage */
-        .mata-container {
+        /* Center Framed Highlight of Mata Photo */
+        .center-frame {
             position: relative;
-            width: 280px;
-            height: 280px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             z-index: 10;
-            animation: zoomIn 1.2s ease-out;
-        }
-
-        .mata-glow {
-            position: absolute;
-            width: 320px;
-            height: 320px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,215,0,0.6) 0%, rgba(255,69,0,0) 70%);
-            animation: rotateGlow 10s linear infinite;
-        }
-
-        .mata-photo {
-            width: 260px;
-            height: 260px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             border: 4px solid #ffd700;
-            object-fit: cover;
-            box-shadow: 0 0 30px #ff9900;
-            position: relative;
-            z-index: 2;
+            overflow: hidden;
+            box-shadow: 0 0 30px #ff9900, inset 0 0 15px rgba(255,215,0,0.8);
+            animation: floatFrame 4s ease-in-out infinite;
         }
 
-        /* Blessings / Wish Message */
+        .center-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Bottom Wish & Signature Card */
         .wish-card {
-            background: rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 10;
+            background: rgba(15, 0, 30, 0.75);
             border: 2px solid #ffd700;
             border-radius: 15px;
-            padding: 15px 25px;
+            padding: 15px 20px;
             text-align: center;
-            max-width: 450px;
-            z-index: 10;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-            animation: fadeInUp 1.5s ease-out;
+            max-width: 420px;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+            backdrop-filter: blur(5px);
+            animation: fadeInUp 1.2s ease-out;
+            margin-bottom: 10px;
         }
 
         .wish-card p {
             color: #fff;
-            font-size: 1rem;
-            line-height: 1.5;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
         .signature {
-            margin-top: 10px;
+            margin-top: 8px;
             color: #ffcc00;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
         }
 
-        /* Floating Flower Petals and Lights */
+        /* Falling Flower Petals & Sparkles Particles */
         .particle {
             position: absolute;
-            background: #ffcc00;
+            z-index: 5;
+            background: #ffd700;
             border-radius: 50%;
             pointer-events: none;
             animation: fall linear infinite;
         }
 
-        /* Animations */
-        @keyframes pulseText {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+        /* Keyframe Animations */
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 1; text-shadow: 0 0 15px #ff4500; }
+            50% { opacity: 0.7; text-shadow: 0 0 25px #ffd700; }
         }
 
         @keyframes bounceBtn {
@@ -178,23 +204,23 @@
         }
 
         @keyframes slideDown {
-            from { transform: translateY(-50px); opacity: 0; }
+            from { transform: translateY(-40px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes zoomIn {
-            from { transform: scale(0); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
         }
 
         @keyframes fadeInUp {
-            from { transform: translateY(50px); opacity: 0; }
+            from { transform: translateY(40px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
 
-        @keyframes rotateGlow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes floatFrame {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes posterZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.06); }
         }
 
         @keyframes fall {
@@ -211,28 +237,29 @@
 </head>
 <body>
 
-    <!-- Welcome / Entry Screen -->
+    <!-- Welcome Screen with Touch Button -->
     <div id="welcome-screen">
-        <div class="welcome-title">✨ Divine Navratri Blessings Await ✨</div>
+        <div class="welcome-title">✨ Invoke Divine Blessings of Maa Durga ✨</div>
         <button class="welcome-btn" onclick="revealCelebration()">Welcome Maiya</button>
     </div>
 
-    <!-- Main Live Animated Screen -->
+    <!-- Main Live Animated Poster Screen -->
     <div id="main-screen">
+        <div class="bg-poster"></div>
+        <div class="overlay-gradient"></div>
+
         <div class="header-greeting">
-            <h3> শুভ নবরাত্রি • Happy Navratri</h3>
+            <h3>শুভ নবরাত্রি • Happy Navratri</h3>
             <h1>Maa Durga Blessings</h1>
         </div>
 
-        <div class="mata-container">
-            <div class="mata-glow"></div>
-            <!-- Using a high-quality Durga Mata placeholder image link -->
-            <img src="https://images.unsplash.com/photo-1603228245466-f3bb40621ad2?auto=format&fit=crop&w=600&q=80" alt="Durga Mata" class="mata-photo">
+        <div class="center-frame">
+            <img src="durga-mata.jpg" alt="Durga Mata">
         </div>
 
         <div class="wish-card">
-            <p>May Maa Durga empower you and your family with her 9 divine forms of name, fame, health, wealth, happiness, and humanity!</p>
-            <div class="signature">With Warm Regards,<br>✨ Ashish ✨</div>
+            <p>May the nine avatars of Maa Durga fill your life with boundless strength, good health, prosperity, and endless joy!</p>
+            <div class="signature">✨ Warm Wishes From: Ashish ✨</div>
         </div>
     </div>
 
@@ -241,38 +268,37 @@
             const welcomeScreen = document.getElementById('welcome-screen');
             const mainScreen = document.getElementById('main-screen');
 
-            // Fade out welcome screen
+            // Smooth fade out of welcome screen
             welcomeScreen.style.opacity = '0';
             welcomeScreen.style.transform = 'scale(1.1)';
             
             setTimeout(() => {
                 welcomeScreen.style.display = 'none';
                 mainScreen.style.display = 'flex';
-                startParticles();
+                startLiveParticles();
             }, 800);
         }
 
-        // Background falling flower/sparkle animation generator
-        function startParticles() {
-            const particleCount = 35;
+        // Generates live falling flower petals and glowing sparkles
+        function startLiveParticles() {
+            const particleCount = 40;
             const container = document.getElementById('main-screen');
 
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
                 
-                // Random properties for rich visual effect
                 const size = Math.random() * 8 + 4;
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
                 particle.style.left = `${Math.random() * 100}vw`;
                 particle.style.top = `-${Math.random() * 20}px`;
                 
-                // Color variation (Gold, Orange, Red)
-                const colors = ['#ffd700', '#ff4500', '#ff8c00', '#ff3333'];
+                // Traditional festive colors (Gold, Saffron, Crimson Red)
+                const colors = ['#ffd700', '#ff4500', '#ff8c00', '#ff3333', '#ffffff'];
                 particle.style.background = colors[Math.floor(Math.random() * colors.length)];
                 
-                const duration = Math.random() * 3 + 3; // 3 to 6 seconds
+                const duration = Math.random() * 3 + 3; // 3 to 6 seconds fall speed
                 const delay = Math.random() * 5;
                 
                 particle.style.animationDuration = `${duration}s`;
