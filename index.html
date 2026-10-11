@@ -3,86 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOps Zero To Hero</title>
+    <title>Navratri Wishes from Ashish</title>
+    <!-- Google Fonts for devotional styling -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background: #11001c;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
             display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: #e0e0e0;
         }
-        .container {
-            text-align: center;
-            padding: 2rem;
-            max-width: 640px;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(90deg, #00d2ff, #7b2ff7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .badge {
-            display: inline-block;
-            margin: 1rem 0 2rem;
-            padding: 0.4rem 1.2rem;
-            border: 1px solid #7b2ff7;
-            border-radius: 999px;
-            font-size: 0.9rem;
-            color: #c4b5fd;
-            letter-spacing: 0.05em;
-        }
-        .cards {
+
+        /* Entry Screen Styles */
+        #entry-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2d0036, #5c0039, #800020);
             display: flex;
-            gap: 1rem;
+            flex-direction: column;
             justify-content: center;
-            flex-wrap: wrap;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
-        .card {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 1.5rem 1.8rem;
-            min-width: 150px;
-            flex: 1;
+
+        .entry-title {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 2.2rem;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+            padding: 0 20px;
         }
-        .card span {
-            display: block;
-            font-size: 0.75rem;
+
+        /* Touch / Click Button Style */
+        .welcome-btn {
+            background: linear-gradient(45deg, #ff8c00, #ff4500, #ffd700);
+            background-size: 200% auto;
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 15px 45px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(255, 140, 0, 0.8);
+            transition: 0.4s ease;
+            animation: pulseBtn 2s infinite, gradientShift 4s infinite alternate;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #9ca3af;
-            margin-bottom: 0.4rem;
+            letter-spacing: 1px;
         }
-        .card strong {
-            font-size: 1.25rem;
-            color: #f9fafb;
+
+        .welcome-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 35px rgba(255, 215, 0, 1);
+        }
+
+        @keyframes pulseBtn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Main Greeting Card & Poster (Hidden initially) */
+        #main-poster {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            background: radial-gradient(circle at center, #430b2c 0%, #150014 100%);
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        /* Background Decorations & Animations */
+        .stars, .diya-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 2s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Header Section */
+        .poster-header {
+            z-index: 2;
+            margin-top: 15px;
+        }
+
+        .poster-header h1 {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 2.2rem;
+            color: #ffcc00;
+            text-shadow: 0 0 10px #ff3300, 0 0 20px #ff0000;
+        }
+
+        .poster-header p {
+            font-size: 1rem;
+            color: #ff99cc;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+
+        /* Center Goddess Area */
+        .goddess-center {
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: auto 0;
+        }
+
+        .mata-frame {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 4px solid #ffd700;
+            box-shadow: 0 0 30px #ff8c00, inset 0 0 20px #ff4500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff4500, #800020);
+            animation: floatMata 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes floatMata {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .mata-frame img {
+            width: 90%;
+            height: 90%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .quote {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #ffe680;
+            font-style: italic;
+            text-shadow: 0 0 8px rgba(0,0,0,0.8);
+            max-width: 500px;
+            padding: 0 15px;
+        }
+
+        /* Footer / Sender Name Section */
+        .poster-footer {
+            z-index: 2;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .sender-text {
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .sender-name {
+            font-family: 'Cinzel Decorative', cursive;
+            color: #ffd700;
+            font-size: 1.4rem;
+            text-shadow: 0 0 10px #ff4500;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>DevOps Zero To Hero</h1>
-        <div class="badge">Josh Batch 10</div>
-        <div class="cards">
-            <div class="card">
-                <span>Framework</span>
-                <strong>Flask 3.1</strong>
+
+    <!-- Entry Screen with Touch Button -->
+    <div id="entry-screen">
+        <div class="entry-title">✨ Divine Navratri Celebrations ✨</div>
+        <button class="welcome-btn" onclick="revealPoster()">Welcome Maiya</button>
+    </div>
+
+    <!-- Live Animated Main Poster -->
+    <div id="main-poster">
+        <!-- Dynamic Background Stars/Lights -->
+        <div class="stars" id="stars-container"></div>
+
+        <!-- Top Header -->
+        <div class="poster-header">
+            <h1>Shubh Navratri</h1>
+            <p>May Goddess Durga Bless You with Strength & Joy</p>
+        </div>
+
+        <!-- Center Goddess & Mantra -->
+        <div class="goddess-center">
+            <div class="mata-frame">
+                <!-- Fallback/Placeholder SVG or Image representing Durga Mata -->
+                <img src="https://images.unsplash.com/photo-1609137144881-517d5420d40e?auto=format&fit=crop&w=400&q=80" alt="Maa Durga">
             </div>
-            <div class="card">
-                <span>Runtime</span>
-                <strong>Python 3.14</strong>
-            </div>
-            <div class="card">
-                <span>Deploy</span>
-                <strong>AWS ECS</strong>
+            <div class="quote">
+                "Sarva Mangala Mangalye, Shive Sarvartha Sadhike.<br>Sharanye Trayambake Gauri, Narayani Namostute."
             </div>
         </div>
+
+        <!-- Footer / From Ashish -->
+        <div class="poster-footer">
+            <div class="sender-text">Warm Wishes From: <span class="sender-name">Ashish</span></div>
+        </div>
     </div>
+
+    <script>
+        // Generate random sparkling background stars
+        const starsContainer = document.getElementById('stars-container');
+        for (let i = 0; i < 60; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.width = Math.random() * 3 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Transition from entry screen to main animated poster
+        function revealPoster() {
+            const entryScreen = document.getElementById('entry-screen');
+            const mainPoster = document.getElementById('main-poster');
+
+            entryScreen.style.opacity = '0';
+            entryScreen.style.transform = 'scale(1.2)';
+            
+            setTimeout(() => {
+                entryScreen.style.display = 'none';
+                mainPoster.style.display = 'flex';
+                setTimeout(() => {
+                    mainPoster.style.opacity = '1';
+                }, 50);
+            }, 800);
+        }
+    </script>
 </body>
 </html>
